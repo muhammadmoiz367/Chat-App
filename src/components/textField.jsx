@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function TextField({ type, placeholder}) {
+function TextField({ type, placeholder, error, ...props }) {
   return (
     <>
-        <TextInput type={type} placeholder={placeholder} />
+        <TextInput type={type} placeholder={placeholder} {...props} />
     </>
   )
 }

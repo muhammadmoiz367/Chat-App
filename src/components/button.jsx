@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function Button({text, icon, styles}) {
+function Button({text, icon, styles, ...props}) {
   return (
-    <ButtonDiv style={styles}>
+    <ButtonDiv style={styles} {...props} >
         {text}
         {icon && <img src={icon} alt="icon" />}
     </ButtonDiv>

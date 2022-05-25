@@ -1,35 +1,62 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { BiLogOut } from 'react-icons/bi';
 
 import SendIcon from '../assets/images/sendBtn.png';
 import Button from '../components/button';
 import ProfileAvatar from '../assets/images/dummyProfileImg.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../store/actions/auth';
+import { useNavigate } from 'react-router-dom';
+import { getAllUsers } from '../store/actions/user';
 
 function ChatHome() {
+  const dispatch = useDispatch();
+  const navigate=useNavigate()
+  const authState = useSelector((state) => state.auth);
+  const userState = useSelector((state) => state.user);
+  console.log("🚀 ~ file: chatHome.jsx ~ line 18 ~ ChatHome ~ userState", userState)
+  console.log("🚀 ~ file: chatHome.jsx ~ line 14 ~ ChatHome ~ authState", authState)
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
+  useEffect(() => {
+    dispatch(getAllUsers())
+  }, [])
+
+  // useEffect(()=>{
+  //   if(!authState.isAuthenticated) {
+  //     navigate('/login')
+  //   }
+  // }, [authState])
+
+
   return (
     <ChatBox>
       <ChatListSection>
         <ChatProfileHeader>
           <img src={ProfileAvatar} />
-          <span>Phillip Torff</span>
+          <span>{authState.user.name}</span>
         </ChatProfileHeader>
         <ChatList>
-          {Array.from({ length: 10 }).map((_, i) => (
-            <ChatItem key={i}>
-              <img src={ProfileAvatar} />
+          {userState.users.map((user) => (
+            <ChatItem key={user._id}>
+            <img src={ProfileAvatar} />
+            <div>
               <div>
-                <div>
-                  <Username>Phillip Torff</Username>
-                  <Message>Thank you Phillip!</Message>
-                </div>
-                <Date>17/06/2020</Date>
+                <Username>{user.name}</Username>
+                <Message>{user.lastText}</Message>
               </div>
-            </ChatItem>
+              <Date>17/06/2020</Date>
+            </div>
+          </ChatItem>
           ))}
         </ChatList>
         <ChatLogout>
           <BiLogOut
+            onClick={handleLogout}
             style={{
               width: '22px',
               height: '30px',

@@ -1,6 +1,23 @@
 export const LOGIN_USER = "LOGIN_USER";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILURE = "LOGIN_FAILURE";
+
 export const LOGOUT_USER = "LOGOUT_USER";
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const LOGOUT_FAILURE = "LOGOUT_FAILURE";
+
 export const SIGNUP_USER = "SIGNUP_USER";
+export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
+export const SIGNUP_FAILURE = "SIGNUP_FAILURE";
+
+export const GET_USER = "GET_USER";
+export const GET_USER_SUCCESS = "GET_USER_SUCCESS";
+export const GET_USER_FAILURE = "GET_USER_FAILURE";
+
+export const GET_USERS = "GET_USERS";
+export const GET_USERS_SUCCESS = "GET_USERS_SUCCESS";
+export const GET_USERS_FAILURE = "GET_USERS_FAILURE";
+
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 export const SET_TOKEN = "SET_TOKEN";
 export const SET_CHATS = "SET_CHATS";
